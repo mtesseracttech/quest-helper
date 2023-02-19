@@ -358,6 +358,8 @@ public enum QuestHelperQuest
 	DAG_ROUTE("Dagannoth Kings Route", QuestVarbits.QUEST_THE_FREMENNIK_ISLES, -1, QuestDetails.Type.GENERIC,
 		QuestDetails.Difficulty.GENERIC),
 
+	BALLOON_FLIGHTS("Balloon Flights", QuestVarbits.QUEST_ENLIGHTENED_JOURNEY, -1, QuestDetails.Type.GENERIC, QuestDetails.Difficulty.GENERIC),
+
 	// Skill
 	AGILITY("Agility", Skill.AGILITY, 99, QuestDetails.Type.SKILL_P2P, QuestDetails.Difficulty.SKILL),
 	WOODCUTTING_MEMBER("Woodcutting - Member", Skill.WOODCUTTING, 99, QuestDetails.Type.SKILL_P2P, QuestDetails.Difficulty.SKILL),

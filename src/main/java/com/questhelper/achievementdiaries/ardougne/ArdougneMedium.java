@@ -275,7 +275,7 @@ public class ArdougneMedium extends ComplexStateQuestHelper
 			"Speak with a monk to travel to Entrana.", true, yewLog11);
 		moveToEntrana.addAlternateNpcs(NpcID.MONK_OF_ENTRANA_1166, NpcID.MONK_OF_ENTRANA);
 		talkToAug = new NpcStep(this, NpcID.AUGUSTE, new WorldPoint(2810, 3356, 0),
-			"Speak with Augustine and travel to Castle Wars.", yewLog11);
+			"Speak with Auguste and travel to Castle Wars.", yewLog11);
 
 		tPArdy = new DetailedQuestStep(this, "Cast Teleport to Ardougne spell.", lawRune.quantity(2),
 			waterRune.quantity(2));

@@ -280,7 +280,7 @@ public class VarrockMedium extends ComplexStateQuestHelper
 			"Speak with a monk to travel to Entrana.", true, willowLog11);
 		moveToEntrana.addAlternateNpcs(NpcID.MONK_OF_ENTRANA_1166, NpcID.MONK_OF_ENTRANA);
 		talkToAug = new NpcStep(this, NpcID.AUGUSTE, new WorldPoint(2810, 3356, 0),
-			"Speak with Augustine and travel to Varrock.", willowLog11);
+			"Speak with Auguste and travel to Varrock.", willowLog11);
 
 		whiteFruit = new ObjectStep(this, 9209, new WorldPoint(3230, 3475, 0),
 			"Pick a white tree fruit at Varrock Castle.");

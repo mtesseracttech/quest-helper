@@ -25,41 +25,21 @@
 package com.questhelper.quests.enlightenedjourney;
 
 import com.questhelper.questhelpers.QuestHelper;
-import com.questhelper.steps.DetailedOwnerStep;
-import com.questhelper.steps.QuestStep;
-import com.questhelper.steps.WidgetStep;
+import com.questhelper.quests.balloonflights.BalloonFlight;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import net.runelite.api.events.VarbitChanged;
-import net.runelite.client.eventbus.Subscribe;
 
-public class BalloonFlight1 extends DetailedOwnerStep
+public class BalloonFlightTaverley extends BalloonFlight
 {
-	WidgetStep dropSand, burnLog, pullRope, pullRedRope, goStraight;
-
-//	HashMap<Integer, WidgetStep> actions = new HashMap<>();
-
-	// Current position, next position
-	ArrayList<Integer> section1;
-	ArrayList<Integer> section2;
-	ArrayList<Integer> section3;
-
-	ArrayList<ArrayList<Integer>> sections;
-
-	public BalloonFlight1(QuestHelper questHelper)
+	public BalloonFlightTaverley(QuestHelper questHelper)
 	{
-		super(questHelper, "Navigate the balloon.");
+		super(questHelper, "Navigate the balloon to Taverley.");
 	}
 
 	@Override
 	protected void setupSteps()
 	{
-		dropSand = new WidgetStep(getQuestHelper(),  "Drop a sandbag.", 471, 17);
-		burnLog = new WidgetStep(getQuestHelper(),  "Burn a log.", 471, 24);
-		pullRope = new WidgetStep(getQuestHelper(),  "Pull the brown rope.", 471, 6);
-		pullRedRope = new WidgetStep(getQuestHelper(),  "Pull the red rope.", 471, 9);
-		goStraight = new WidgetStep(getQuestHelper(),  "Press relax.", 471, 27);
+		super.setupSteps();
 
 		section1 = new ArrayList<>();
 		section1.add(5);
@@ -92,7 +72,6 @@ public class BalloonFlight1 extends DetailedOwnerStep
 		section2 = new ArrayList<>();
 		// Not gone to
 		section2.add(5);
-
 		section2.add(5);
 		// Burn log
 		section2.add(6);
@@ -144,54 +123,5 @@ public class BalloonFlight1 extends DetailedOwnerStep
 		section3.add(5);
 
 		sections = new ArrayList<>(Arrays.asList(section1, section2, section3));
-	}
-
-	@Subscribe
-	@Override
-	public void onVarbitChanged(VarbitChanged varbitChanged)
-	{
-		super.onVarbitChanged(varbitChanged);
-		updateSteps();
-	}
-
-	protected void updateSteps()
-	{
-		int section = client.getVarbitValue(2884) - 1;
-		int xPos = client.getVarbitValue(2882);
-		int yPos = client.getVarbitValue(2883);
-
-		// If we've gone to next section before updating the pos, return
-		if (sections.get(section).size() <= xPos + 1)
-		{
-			return;
-		}
-		int diffBetweenCurrentAndNextPos = sections.get(section).get(xPos + 1) - yPos;
-
-		if (diffBetweenCurrentAndNextPos == 0)
-		{
-			startUpStep(goStraight);
-		}
-		else if (diffBetweenCurrentAndNextPos == 1)
-		{
-			startUpStep(burnLog);
-		}
-		else if (diffBetweenCurrentAndNextPos > 1)
-		{
-			startUpStep(dropSand);
-		}
-		else if (diffBetweenCurrentAndNextPos == -1)
-		{
-			startUpStep(pullRope);
-		}
-		else
-		{
-			startUpStep(pullRedRope);
-		}
-	}
-
-	@Override
-	public Collection<QuestStep> getSteps()
-	{
-		return Arrays.asList(dropSand, burnLog, pullRope, pullRedRope, goStraight);
 	}
 }
